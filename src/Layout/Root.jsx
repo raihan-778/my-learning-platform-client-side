@@ -7,9 +7,13 @@ const Root = () => {
   return (
     <div>
       <Header></Header>
-      <div className="">
-        <Outlet></Outlet>
-        <RightSideNav></RightSideNav>
+      <div className="grid gap-3 grid-cols-2">
+        <div className="col-3 ">
+          <RightSideNav></RightSideNav>
+        </div>
+        <div className="col-9">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );
