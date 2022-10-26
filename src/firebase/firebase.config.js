@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCAbKtz7qqq3bDPzmxJOimvvV2j5Kq2-bg",
-  authDomain: "hotel-booking-auth-client.firebaseapp.com",
-  projectId: "hotel-booking-auth-client",
-  storageBucket: "hotel-booking-auth-client.appspot.com",
-  messagingSenderId: "1013840698149",
-  appId: "1:1013840698149:web:df5160c83dafae377d18cc",
+  apiKey: "AIzaSyA12GbLLL7y92jBdwa_UMA7KIEjrW0Bn50",
+  authDomain: "web-and-cyber-security-learn.firebaseapp.com",
+  projectId: "web-and-cyber-security-learn",
+  storageBucket: "web-and-cyber-security-learn.appspot.com",
+  messagingSenderId: "518583892671",
+  appId: "1:518583892671:web:695e4e3946cf390fd6240a",
 };
 
 // Initialize Firebase

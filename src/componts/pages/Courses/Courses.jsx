@@ -1,6 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import CourseInfoCart from "../../CourseInfoCart/CourseInfoCart";
+import RightSideNav from "../RightSideNav/RightSideNav";
 
 const Courses = () => {
   const topicData = useLoaderData();
@@ -8,13 +9,17 @@ const Courses = () => {
   console.log(allCourses);
 
   return (
-    <div className="grid gap-3 grid-cols-2 my-2">
-      {allCourses?.map((singleCourse) => (
-        <CourseInfoCart
-          key={singleCourse._id}
-          singleCourse={singleCourse}
-        ></CourseInfoCart>
-      ))}
+    <div className="grid  grid-flow-col">
+      <div className="col-span-10 gap-2 grid grid-cols-2">
+        {allCourses?.map((singleCourse) => (
+          <CourseInfoCart
+            key={singleCourse._id}
+            singleCourse={singleCourse}
+          ></CourseInfoCart>
+        ))}
+      </div>
+      <div className="col-span-2"></div>
+      <RightSideNav></RightSideNav>
     </div>
   );
 };

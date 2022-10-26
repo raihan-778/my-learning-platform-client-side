@@ -1,20 +1,20 @@
 import { Sidebar } from "flowbite-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const CourseCategory = ({ singleTopic }) => {
-  const courseDetails = useLoaderData();
-  console.log(courseDetails);
-  console.log(singleTopic);
+  const [courseDetail, setCourseDetail] = useState("");
+
+  console.log(singleTopic.id);
   return (
     <div>
-      <div className="w-3/4 text-xl">
+      <div className="w-full text-xl">
         <Sidebar className="m-2" aria-label="Default sidebar example">
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item>
-                <Link to={`/course-category/${singleTopic.id}`}>
-                  {singleTopic.name}
+                <Link to={`/topics-category/${singleTopic?.id}`}>
+                  {singleTopic?.name}
                 </Link>
               </Sidebar.Item>
             </Sidebar.ItemGroup>

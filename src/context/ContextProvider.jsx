@@ -1,58 +1,56 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
+import app from "../firebase/firebase.config";
 
-const auth = getAuth();
 export const AuthContext = createContext();
+const auth = getAuth(app);
 
 const ContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { user, setUser } = useState();
 
-  //google signUP
-  const googleSignUp = (provider) => {
-    return signInWithPopup(auth, provider);
-  };
-  //sign in with email and password
   const userSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  //login with emial and password
   const userLogin = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  //user Logout
-  const logOut = () => {
-    return signOut(auth);
+  const githubSignUp = (provider) => {
+    return signInWithPopup(auth, provider);
+  };
+  const googleSignUp = (provider) => {
+    return signInWithPopup(auth, provider);
   };
 
-  //observer to get user info
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
+      console.log("on state change", currentUser);
+
+      if (currentUser === null || currentUser.emailVerified) {
+        setUser(currentUser);
+      }
     });
+
     return () => {
       unsubscribe();
     };
   }, []);
 
-  const authInfo = { user, googleSignUp, userSignUp, userLogin, logOut };
+  const authInfo = { user, userLogin, githubSignUp, googleSignUp, userSignUp };
 
   return (
     <div>
-      <AuthContext.Provider value={authInfo}></AuthContext.Provider>
-      <h2>This is Context Provider</h2>
-      {children}
+      <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
     </div>
   );
 };
