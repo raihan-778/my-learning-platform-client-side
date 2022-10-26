@@ -4,6 +4,7 @@ import {
   Flowbite,
   DarkThemeToggle,
   Navbar,
+  Tooltip,
 } from "flowbite-react";
 import React, { useContext } from "react";
 import { FaUser } from "react-icons/fa";
@@ -11,7 +12,18 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/ContextProvider";
 
 const Header = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setUser, logOut } = useContext(AuthContext);
+
+  if (user) {
+    console.log(user);
+    console.log(user.displayName);
+  }
+  const handleSignOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <Navbar fluid={true} className="text-indigo-900" rounded={true}>
@@ -33,26 +45,31 @@ const Header = () => {
             Home
           </Link>
           <Link to="courses">Courses</Link>
-          <Link to="register">Register</Link>
-          <Link to="login">Login</Link>
+
           <Link to="blog">Blog</Link>
           <Link to="faq">FAQ</Link>
 
           <Flowbite>
             <DarkThemeToggle />
           </Flowbite>
+
           {user?.uid ? (
-            <Avatar
-              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-              rounded={true}
-            />
+            <Button onClick={handleSignOut}>Sign Out</Button>
+          ) : (
+            <>
+              <Link to="register">Register</Link>
+              <Link to="login">Login</Link>
+            </>
+          )}
+          {user?.uid ? (
+            <>
+              <Tooltip content={user?.displayName}>
+                <Avatar img={user?.photoURL} rounded={true} />
+              </Tooltip>
+            </>
           ) : (
             <FaUser></FaUser>
           )}
-          <Avatar
-            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            rounded={true}
-          />
         </Navbar.Collapse>
       </Navbar>
     </div>

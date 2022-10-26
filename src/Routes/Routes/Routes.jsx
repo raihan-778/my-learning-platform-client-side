@@ -8,6 +8,7 @@ import CourseCategory from "../../componts/CourseCategory/CouorseCategory";
 import Root from "../../Layout/Root";
 import Faq from "../../componts/pages/FAQ/Faq";
 import Blog from "../../componts/pages/Blog/Blog";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +30,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: <Blog></Blog>,
+        element: (
+          <PrivateRoute>
+            <Blog></Blog>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/register",

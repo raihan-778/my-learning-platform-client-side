@@ -1,11 +1,15 @@
 import { Checkbox, Label, TextInput, Button } from "flowbite-react";
 import { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/ContextProvider";
 
 const Login = () => {
-  const { userLogin } = useContext(AuthContext);
+  const { userLogin, loading, setLoading } = useContext(AuthContext);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -17,11 +21,14 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        form.reset();
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         console.error(err);
         setError(err.message);
-      });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (
