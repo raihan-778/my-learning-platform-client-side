@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateCurrentUser,
   updateProfile,
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
@@ -15,7 +16,8 @@ export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const ContextProvider = ({ children }) => {
-  const { user, setUser } = useState();
+  const [user, setUser] = useState();
+  const [loading, setLoading] = useState(true);
 
   const userSignUp = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -46,7 +48,21 @@ const ContextProvider = ({ children }) => {
     };
   }, []);
 
-  const authInfo = { user, userLogin, githubSignUp, googleSignUp, userSignUp };
+  const userProfileUpdate = (name, imgURL) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: imgURL,
+    });
+  };
+
+  const authInfo = {
+    user,
+    userLogin,
+    userProfileUpdate,
+    githubSignUp,
+    googleSignUp,
+    userSignUp,
+  };
 
   return (
     <div>

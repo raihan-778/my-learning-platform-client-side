@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/ContextProvider";
 
 const Register = () => {
-  const { user, userSignUp, githubSignUp, googleSignUp } =
+  const { user, userSignUp, userProfileUpdate, githubSignUp, googleSignUp } =
     useContext(AuthContext);
   const githubProvider = new GithubAuthProvider();
   const googleProvider = new GoogleAuthProvider();
@@ -22,7 +22,15 @@ const Register = () => {
     userSignUp(email, password)
       .then((result) => {
         console.log(result.user);
+        form.reset();
+        updateUser(name, imgURL);
       })
+      .catch((err) => console.error(err));
+  };
+
+  const updateUser = (name, imgURL) => {
+    userProfileUpdate(name, imgURL)
+      .then((result) => console.log(result.user))
       .catch((err) => console.error(err));
   };
 

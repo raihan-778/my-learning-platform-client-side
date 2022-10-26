@@ -6,10 +6,12 @@ import {
   Navbar,
 } from "flowbite-react";
 import React, { useContext } from "react";
+import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/ContextProvider";
 
 const Header = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <Navbar fluid={true} className="text-indigo-900" rounded={true}>
@@ -39,7 +41,14 @@ const Header = () => {
           <Flowbite>
             <DarkThemeToggle />
           </Flowbite>
-
+          {user?.uid ? (
+            <Avatar
+              img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+              rounded={true}
+            />
+          ) : (
+            <FaUser></FaUser>
+          )}
           <Avatar
             img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
             rounded={true}
