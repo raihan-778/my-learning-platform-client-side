@@ -5,17 +5,20 @@ import RightSideNav from "../componts/shared/RightSideNav/RightSideNav";
 
 const Root = () => {
   return (
-    <div>
+    <>
       <Header></Header>
-      <div className="grid gap-3 grid-cols-2">
-        <div className="col-3 ">
+      <div className="grid gap-3 grid-flow-col">
+        <div className="col-span-1 ">
           <RightSideNav></RightSideNav>
         </div>
-        <div className="col-9">
+        <div className="col-span-4">
+          <h2 className="text-3xl ">
+            Welcome to New Tech Learning World To enrich Skills
+          </h2>
           <Outlet></Outlet>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

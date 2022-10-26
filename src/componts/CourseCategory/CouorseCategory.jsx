@@ -1,8 +1,10 @@
 import { Sidebar } from "flowbite-react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-const SideNav = ({ singleTopic }) => {
+const CourseCategory = ({ singleTopic }) => {
+  const courseDetails = useLoaderData();
+  console.log(courseDetails);
   console.log(singleTopic);
   return (
     <div>
@@ -11,7 +13,9 @@ const SideNav = ({ singleTopic }) => {
           <Sidebar.Items>
             <Sidebar.ItemGroup>
               <Sidebar.Item>
-                <Link>{singleTopic.name}</Link>
+                <Link to={`/course-category/${singleTopic.id}`}>
+                  {singleTopic.name}
+                </Link>
               </Sidebar.Item>
             </Sidebar.ItemGroup>
           </Sidebar.Items>
@@ -21,4 +25,4 @@ const SideNav = ({ singleTopic }) => {
   );
 };
 
-export default SideNav;
+export default CourseCategory;

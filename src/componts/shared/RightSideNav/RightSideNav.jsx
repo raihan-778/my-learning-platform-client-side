@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import SideNav from "../../SideNav/SideNav";
+import CourseCategory from "../../CourseCategory/CouorseCategory";
 
 const RightSideNav = () => {
   const [topicData, setTopicData] = useState([]);
@@ -15,7 +15,10 @@ const RightSideNav = () => {
   return (
     <div>
       {topicList?.map((singleTopic) => (
-        <SideNav key={singleTopic.id} singleTopic={singleTopic}></SideNav>
+        <CourseCategory
+          key={singleTopic.id}
+          singleTopic={singleTopic}
+        ></CourseCategory>
       ))}
     </div>
   );
