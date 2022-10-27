@@ -10,7 +10,7 @@ const Courses = () => {
 
   return (
     <div className="grid  grid-flow-col">
-      <div className="col-span-10 gap-2 grid grid-cols-2">
+      <div className="col-span-10 sm:col-span-12 gap-2 grid grid-cols-2">
         {allCourses?.map((singleCourse) => (
           <CourseInfoCart
             key={singleCourse._id}
@@ -18,7 +18,7 @@ const Courses = () => {
           ></CourseInfoCart>
         ))}
       </div>
-      <div className="col-span-2"></div>
+      <div className="sm:col-span-12 col-span-2 "></div>
       <RightSideNav></RightSideNav>
     </div>
   );
