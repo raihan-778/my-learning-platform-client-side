@@ -4,11 +4,12 @@ import Courses from "../../componts/pages/Courses/Courses";
 import Home from "../../componts/pages/Home/Home";
 import Login from "../../componts/Login/Login";
 import Register from "../../componts/Register/Register";
-import CourseCategory from "../../componts/CourseCategory/CouorseCategory";
+
 import Root from "../../Layout/Root";
 import Faq from "../../componts/pages/FAQ/Faq";
 import Blog from "../../componts/pages/Blog/Blog";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import SelectedCatInfo from "../../componts/SelectedCatInfo/SelectedCatInfo";
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        loader: () => fetch("http://localhost:5000/allTopics"),
+        loader: () => fetch("http://localhost:5000/all-topics"),
         path: "/courses",
         element: <Courses></Courses>,
       },
@@ -45,10 +46,14 @@ export const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
+        path: "/selectedtopic",
+        element: <SelectedCatInfo></SelectedCatInfo>,
+      },
+      {
         path: "/topics-category/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/topics-category/:${params.id}`),
-        element: <CourseCategory></CourseCategory>,
+          fetch(`http://localhost:5000/topics-category/${params.id}`),
+        element: <SelectedCatInfo></SelectedCatInfo>,
       },
     ],
   },

@@ -1,5 +1,6 @@
+import { Sidebar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
-import CourseCategory from "../../CourseCategory/CouorseCategory";
+import { Link } from "react-router-dom";
 
 const RightSideNav = () => {
   const [topicData, setTopicData] = useState([]);
@@ -15,10 +16,22 @@ const RightSideNav = () => {
   return (
     <div>
       {topicList?.map((singleTopic) => (
-        <CourseCategory
-          key={singleTopic.id}
-          singleTopic={singleTopic}
-        ></CourseCategory>
+        <div className="w-full text-xl">
+          <Sidebar className="m-2" aria-label="Default sidebar example">
+            <Sidebar.Items>
+              <Sidebar.ItemGroup>
+                <Sidebar.Item>
+                  <Link
+                    to={`/topics-category/${singleTopic.id}`}
+                    key={singleTopic.id}
+                  >
+                    {singleTopic.name}
+                  </Link>
+                </Sidebar.Item>
+              </Sidebar.ItemGroup>
+            </Sidebar.Items>
+          </Sidebar>
+        </div>
       ))}
     </div>
   );
