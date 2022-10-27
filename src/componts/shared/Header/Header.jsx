@@ -60,7 +60,7 @@ const Header = () => {
               <Link to="login">Login</Link>
             </>
           )}
-          {user?.uid ? (
+          {user?.email ? (
             <>
               <Tooltip content={user?.displayName}>
                 <Avatar img={user?.photoURL} rounded={true} />

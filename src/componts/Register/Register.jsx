@@ -1,6 +1,6 @@
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import { Label, ListGroup, TextInput, Checkbox, Button } from "flowbite-react";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -9,6 +9,7 @@ import { AuthContext } from "../../context/ContextProvider";
 const Register = () => {
   const { user, userSignUp, userProfileUpdate, githubSignUp, googleSignUp } =
     useContext(AuthContext);
+  const [error, setError] = useState("");
   const githubProvider = new GithubAuthProvider();
   const googleProvider = new GoogleAuthProvider();
   const handleRegister = (e) => {
@@ -23,21 +24,31 @@ const Register = () => {
       .then((result) => {
         console.log(result.user);
         form.reset();
+        setError("");
         updateUser(name, imgURL);
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
   };
 
   const updateUser = (name, imgURL) => {
     userProfileUpdate(name, imgURL)
       .then((result) => console.log(result.user))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error(err);
+        setError(err.message);
+      });
   };
 
   const handleGoogleSignIn = () => {
     googleSignUp(googleProvider)
       .then((result) => console.log(result.user))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        setError(err.message);
+        console.error(err);
+      });
   };
   const handleGithubSignIn = () => {
     githubSignUp(githubProvider)
@@ -137,6 +148,7 @@ const Register = () => {
               <Link to="/login">Please Login</Link>
             </span>
           </p>
+          <p className="text-rose-600">{error}</p>
         </form>
 
         <div>

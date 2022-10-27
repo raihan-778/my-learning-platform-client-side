@@ -12,6 +12,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SelectedCatInfo from "../../componts/SelectedCatInfo/SelectedCatInfo";
 import SingleCourse from "../../componts/SingleCourse/SingleCourse";
 import CheckOut from "../../componts/CheckOut/CheckOut";
+import Error from "../../componts/Error/Error";
 
 export const router = createBrowserRouter([
   {
@@ -66,5 +67,10 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+
+  {
+    path: "/*",
+    element: <Error></Error>,
   },
 ]);
