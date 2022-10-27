@@ -13,12 +13,18 @@ import SelectedCatInfo from "../../componts/SelectedCatInfo/SelectedCatInfo";
 import SingleCourse from "../../componts/SingleCourse/SingleCourse";
 import CheckOut from "../../componts/CheckOut/CheckOut";
 import Error from "../../componts/Error/Error";
+import Home from "../../componts/Home/Home";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
     children: [
+      {
+        path: "/",
+
+        element: <Home></Home>,
+      },
       {
         loader: () =>
           fetch("https://learning-platform-server-six.vercel.app/all-topics"),
@@ -31,11 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element: (
-          <PrivateRoute>
-            <Blog></Blog>
-          </PrivateRoute>
-        ),
+        element: <Blog></Blog>,
       },
       {
         path: "/register",

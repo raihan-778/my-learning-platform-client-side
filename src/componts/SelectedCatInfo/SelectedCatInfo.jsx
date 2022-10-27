@@ -43,7 +43,6 @@ const SelectedCatInfo = () => {
   console.log(categoryDetail[0]);
   return (
     <div>
-      <Banner></Banner>
       <div className="max-w p-5">
         <Card>
           <img className="w-3/4 m-auto" src={image_url} alt="" />

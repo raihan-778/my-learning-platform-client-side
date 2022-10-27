@@ -4,7 +4,7 @@ import { FaArrowAltCircleDown } from "react-icons/fa";
 
 const Blog = () => {
   return (
-    <div>
+    <div className="mt-3">
       <Accordion>
         <Accordion.Panel>
           <Accordion.Title>What is CORS?</Accordion.Title>

@@ -1,5 +1,7 @@
-import { Avatar } from "flowbite-react";
+import { Avatar, Button } from "flowbite-react";
 import React from "react";
+import { Link } from "react-router-dom";
+import { getFilePlugin } from "@react-pdf-viewer/get-file";
 
 const Banner = () => {
   return (
@@ -25,17 +27,11 @@ const Banner = () => {
                 href="#"
                 className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
               >
-                Get started
+                <Link to="courses"> Get started</Link>
               </a>
             </div>
-            <div className="ml-3 inline-flex rounded-md shadow">
-              <a
-                href="#"
-                className="inline-flex items-center justify-center rounded-md border border-transparent bg-white px-5 py-3 text-base font-medium text-indigo-600 hover:bg-indigo-50"
-              >
-                Learn more
-              </a>
-            </div>
+            <div className="inline-flex rounded-md shadow"></div>
+            <div className="ml-3 inline-flex rounded-md shadow"></div>
           </div>
         </div>
       </div>

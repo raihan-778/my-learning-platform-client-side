@@ -3,6 +3,21 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const SingleCourse = () => {
+  const onButtonClick = () => {
+    // using Java Script method to get PDF file
+    fetch("SamplePDF.pdf").then((response) => {
+      response.blob().then((blob) => {
+        // Creating new object of PDF file
+        const fileURL = window.URL.createObjectURL(blob);
+        // Setting various property values
+        let alink = document.createElement("a");
+        alink.href = fileURL;
+        alink.download = "SamplePDF.pdf";
+        alink.click();
+      });
+    });
+  };
+
   const singleCourseDetails = useLoaderData();
   console.log(singleCourseDetails);
   const { title, details, id, duration, rating, image_url, instructor } =
@@ -29,12 +44,7 @@ const SingleCourse = () => {
               </h2>
               <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
                 <div className="inline-flex rounded-md shadow">
-                  <a
-                    href="#"
-                    className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-5 py-3 text-base font-medium text-white hover:bg-indigo-700"
-                  >
-                    Download PDF
-                  </a>
+                  <Button onClick={onButtonClick}>Download PDF</Button>
                 </div>
               </div>
             </div>
