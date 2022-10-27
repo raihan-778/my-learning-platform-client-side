@@ -6,7 +6,7 @@ const RightSideNav = () => {
   const [topicData, setTopicData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/topics-category")
+    fetch("https://learning-platform-server-six.vercel.app/topics-category")
       .then((res) => res.json())
       .then((data) => setTopicData(data));
   }, []);
@@ -17,7 +17,7 @@ const RightSideNav = () => {
     <div>
       {topicList?.map((singleTopic) => (
         <div className="w-full text-xl">
-          <Sidebar className="m-2" aria-label="Default sidebar example">
+          <Sidebar className="m-4" aria-label="Default sidebar example">
             <Sidebar.Items>
               <Sidebar.ItemGroup>
                 <Sidebar.Item>

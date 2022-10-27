@@ -8,8 +8,8 @@ const CourseInfoCart = ({ singleCourse }) => {
   console.log(singleCourse);
   return (
     <div>
-      <div className="max-w-sm">
-        <Card className="p-2 h-auto">
+      <div className="max-w-sm lg:w-72 md:w-3/4 mt-4">
+        <Card className="p-2 h-96">
           <img className="h-32" src={image_url} alt="" />
           <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {title}
