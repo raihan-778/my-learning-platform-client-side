@@ -5,8 +5,6 @@ import Banner from "../pages/Banner/Banner";
 
 //for pdf download
 
-import React from "react";
-
 const App = () => {
   // Function will execute on click of button
   const onButtonClick = () => {

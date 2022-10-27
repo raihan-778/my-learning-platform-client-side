@@ -41,10 +41,9 @@ const Header = () => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Link to="/" active={true}>
-            Home
+          <Link to="courses" active={true}>
+            Courses
           </Link>
-          <Link to="courses">Courses</Link>
 
           <Link to="blog">Blog</Link>
           <Link to="faq">FAQ</Link>
