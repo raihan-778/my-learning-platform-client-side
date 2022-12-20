@@ -6,7 +6,7 @@ const RightSideNav = () => {
   const [topicData, setTopicData] = useState([]);
 
   useEffect(() => {
-    fetch("https://learning-platform-server-six.vercel.app/topics-category")
+    fetch("http://localhost:5000/topics-category")
       .then((res) => res.json())
       .then((data) => setTopicData(data));
   }, []);

@@ -26,8 +26,7 @@ export const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        loader: () =>
-          fetch("https://learning-platform-server-six.vercel.app/all-topics"),
+        loader: () => fetch("http://localhost:5000/all-topics"),
         path: "/courses",
         element: <Courses></Courses>,
       },
@@ -50,25 +49,19 @@ export const router = createBrowserRouter([
       {
         path: "/all-topics/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://learning-platform-server-six.vercel.app/all-topics/${params.id}`
-          ),
+          fetch(`http://localhost:5000/all-topics/${params.id}`),
         element: <SingleCourse></SingleCourse>,
       },
       {
         path: "/topics-category/:id",
         loader: ({ params }) =>
-          fetch(
-            `https://learning-platform-server-six.vercel.app/topics-category/${params.id}`
-          ),
+          fetch(`http://localhost:5000/topics-category/${params.id}`),
         element: <SelectedCatInfo></SelectedCatInfo>,
       },
       {
         path: "/all-topics/:id/checkout",
         loader: ({ params }) =>
-          fetch(
-            `https://learning-platform-server-six.vercel.app/all-topics/${params.id}`
-          ),
+          fetch(`http://localhost:5000/all-topics/${params.id}`),
         element: (
           <PrivateRoute>
             <CheckOut></CheckOut>

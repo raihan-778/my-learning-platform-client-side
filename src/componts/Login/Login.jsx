@@ -25,8 +25,7 @@ const Login = () => {
         navigate(from, { replace: true });
       })
       .catch((err) => {
-        console.error(err);
-        setError(err.message);
+        setError("Please Enter a Valid email or password");
       })
       .finally(() => setLoading(false));
   };
@@ -35,7 +34,7 @@ const Login = () => {
     <div>
       <form
         onSubmit={handleLogin}
-        className="flex justify-center mx-auto w-1/2 flex-col gap-4"
+        className="lg:w-1/2 md:w-1/2 w-full grid grid-cols-1 mx-10  gap-4"
       >
         <div>
           <div className="mb-2 block">
@@ -74,7 +73,7 @@ const Login = () => {
             Remember me
           </Label>
         </div> */}
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Log In</Button>
         <p>
           Don't have an account{" "}
           <span className="text-green-500">

@@ -61,8 +61,11 @@ const Register = () => {
 
   return (
     <div>
-      <div className="flex justify-between">
-        <form onSubmit={handleRegister} className="flex flex-col w-6/12 gap-4">
+      <div className=" mt-10 grid lg:grid-cols-4 md:grid-cols-4 sm:grid-cols-1 gap-3">
+        <form
+          onSubmit={handleRegister}
+          className="col-span-3  grid grid-cols-1 gap-4"
+        >
           <div>
             <div className="mb-2 block">
               <Label
@@ -76,6 +79,7 @@ const Register = () => {
               type="text"
               required={true}
               shadow={true}
+              placeholder="Enter your Name"
               name="name"
             />
           </div>
@@ -83,13 +87,14 @@ const Register = () => {
             <div className="mb-2 block">
               <Label
                 className="text-gray-200 "
-                htmlFor="name"
+                htmlFor="imgURL"
                 value="Enter your Image URL"
               />
             </div>
             <TextInput
               id="imgURL"
               type="text"
+              placeholder="Enter image URL"
               required={true}
               shadow={true}
               name="imgURL"
@@ -107,7 +112,7 @@ const Register = () => {
               id="email2"
               type="email"
               name="email"
-              placeholder="name@flowbite.com"
+              placeholder="name@email.com"
               required={true}
               shadow={true}
             />
@@ -129,35 +134,20 @@ const Register = () => {
               shadow={true}
             />
           </div>
-          <div className="flex items-center gap-2">
-            <Checkbox id="agree" />
-            <Label className="text-gray-200 " htmlFor="agree">
-              I agree with the{" "}
-              <a
-                href="/forms"
-                className="text-blue-600 hover:underline dark:text-blue-500"
-              >
-                terms and conditions
-              </a>
-            </Label>
-          </div>
           <Button type="submit">Register new account</Button>
           <p>
             Already have an account!
             <span className="text-green-500">
-              <Link to="/login">Please Login</Link>
+              <Link to="/login"> Please Login</Link>
             </span>
           </p>
           <p className="text-rose-600">{error}</p>
         </form>
 
-        <div>
-          <div className="w-48">
+        <div className="mt-10 mx-auto">
+          <div className="w-56">
             <ListGroup>
-              <ListGroup.Item
-                onClick={handleGoogleSignIn}
-                className="border-2 rounded-1"
-              >
+              <ListGroup.Item onClick={handleGoogleSignIn}>
                 <FaGoogle></FaGoogle>{" "}
                 <span className=" ms-1 ps-2"> Log In With Google</span>
               </ListGroup.Item>
