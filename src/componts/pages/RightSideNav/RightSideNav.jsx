@@ -1,4 +1,4 @@
-import { Sidebar } from "flowbite-react";
+import { Button, Sidebar } from "flowbite-react";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -15,24 +15,27 @@ const RightSideNav = () => {
   console.log(topicList);
   return (
     <div>
-      {topicList?.map((singleTopic) => (
-        <div className="w-full text-xl">
-          <Sidebar className="m-4" aria-label="Default sidebar example">
-            <Sidebar.Items>
-              <Sidebar.ItemGroup>
-                <Sidebar.Item>
-                  <Link
-                    to={`/topics-category/${singleTopic.id}`}
-                    key={singleTopic.id}
-                  >
+      <aside className="w-full p-6 mx-auto sm:w-60 dark:bg-gray-900 dark:text-gray-100">
+        <nav className="space-y-8 text-sm">
+          <div className="space-y-2">
+            <h2 className="text-sm font-semibold tracking-widest uppercase dark:text-gray-400">
+              All Courses
+            </h2>
+            <div className="flex flex-col space-y-1">
+              {topicList?.map((singleTopic) => (
+                <Link
+                  to={`/topics-category/${singleTopic.id}`}
+                  key={singleTopic.id}
+                >
+                  <Button className="w-44" color="purple">
                     {singleTopic.name}
-                  </Link>
-                </Sidebar.Item>
-              </Sidebar.ItemGroup>
-            </Sidebar.Items>
-          </Sidebar>
-        </div>
-      ))}
+                  </Button>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </nav>
+      </aside>
     </div>
   );
 };

@@ -31,11 +31,8 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={handleLogin}
-        className="lg:w-1/2 md:w-1/2 w-full grid grid-cols-1 mx-10  gap-4"
-      >
+    <div className="mt-10 grid lg:grid-cols-1 lg:w/2 sm:w-full md:w-1/2 mx-auto gap-3">
+      <form onSubmit={handleLogin} className="grid grid-cols-1 gap-4">
         <div>
           <div className="mb-2 block">
             <Label
